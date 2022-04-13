@@ -7,7 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 public class LoginServlet extends HttpServlet {
 
@@ -27,7 +29,7 @@ public class LoginServlet extends HttpServlet {
             return;
         }
         tbUser user= model.findAccountByUsername(username);
-        if (user==null){
+        if (user == null){
             req.setAttribute("errorsLog","Not found username");
             req.getRequestDispatcher("/user/login.jsp").forward(req,resp);
             return;

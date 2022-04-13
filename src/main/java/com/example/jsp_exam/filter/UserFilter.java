@@ -11,13 +11,11 @@ import java.io.IOException;
 public class UserFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        System.out.println("start user filter");
         Filter.super.init(filterConfig);
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("User Filtering.....");
         HttpServletRequest request = (HttpServletRequest)servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession();
@@ -25,14 +23,12 @@ public class UserFilter implements Filter {
         if (account == null){
             response.sendRedirect("/user/login");
         }else {
-            System.out.println("Current account: " + account.getUsername());
             filterChain.doFilter(servletRequest, servletResponse);
         }
     }
 
     @Override
     public void destroy() {
-        System.out.println("end user filter");
         Filter.super.destroy();
     }
 }
