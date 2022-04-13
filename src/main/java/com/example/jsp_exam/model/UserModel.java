@@ -1,35 +1,31 @@
 package com.example.jsp_exam.model;
 
-import com.example.jsp_exam.entity.User;
-import com.example.jsp_exam.util.ConnectionHelper;
-import com.example.jsp_exam.util.SQLConfig;
+import com.example.jsp_exam.entity.tbUser;
+import com.example.jsp_exam.ulti.Config.ConfigSql;
+import com.example.jsp_exam.ulti.ConnectionHelper;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 public class UserModel {
-    public User findAccountByUsername(String username) {
+    public tbUser findAccountByUsername(String username) {
+        tbUser obj = null;
         try {
             Connection connection = ConnectionHelper.getConnection();
             PreparedStatement preparedStatement =
                     connection.prepareStatement(
-                            SQLConfig.SELECT_ACCOUNT_BY_USERNAME);
+                            ConfigSql.SELECT_ACCOUNT_BY_USERNAME);
             preparedStatement.setString(1, username);
+            // PrepareStatement
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 String usernameDatabase = resultSet.getString("username");
                 String password = resultSet.getString("password");
-                User user = new User();
-                user.setUsername(usernameDatabase);
-                user.setPassword(password);
-                ;
+                obj = new tbUser(usernameDatabase, password);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch(ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return null;

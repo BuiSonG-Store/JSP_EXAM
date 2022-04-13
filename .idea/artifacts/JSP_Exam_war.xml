@@ -9,7 +9,7 @@
         <unpackNestedArchives>false</unpackNestedArchives>
       </options>
     </properties>
-    <root id="archive" name="demo123-1.0-SNAPSHOT.war">
+    <root id="archive" name="JSP_EXAM-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="JSP_EXAM:war exploded" />
     </root>
   </artifact>

@@ -1,7 +1,8 @@
 package com.example.jsp_exam.model;
 
-import com.example.jsp_exam.entity.Products;
-import com.example.jsp_exam.util.ConnectionHelper;
+import com.example.jsp_exam.entity.tbProducts;
+import com.example.jsp_exam.ulti.Config.ConfigSql;
+import com.example.jsp_exam.ulti.ConnectionHelper;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,29 +10,27 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductModel{
-    public List<Products> findAll() {
-        List<Products> listObj = new ArrayList<>();
-        ConnectionHelper connectionHelper = new ConnectionHelper();
+public class ProductModel {
+    public List<tbProducts> findAll(){
+        List<tbProducts> listObj = new ArrayList<>();
         try {
-            Connection connection = connectionHelper.getConnection();
-            String sqlSelect = "select * from product";
-            PreparedStatement prepareStatement = connection.prepareStatement(sqlSelect);
-            ResultSet rs = prepareStatement.executeQuery(sqlSelect);
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                double price = rs.getDouble("price");
-                int amount = rs.getInt("amount");;
-                String details = rs.getString("details");
-                Products obj = new Products(id, name, price, price, amount,details);
+            Connection connection = ConnectionHelper.getConnection();
+            String sqlSelect = ConfigSql.DATABASE_PRODUCT_SELECT;
+            PreparedStatement statement = connection.prepareStatement(sqlSelect);
+            ResultSet resultSet = statement.executeQuery(sqlSelect);
+            while (resultSet.next()){
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                double price = resultSet.getDouble("price");
+                double amount = resultSet.getDouble("amount");
+                String details = resultSet.getString("details");
+                tbProducts obj = new tbProducts(id, name, price, amount, details);
                 listObj.add(obj);
             }
-        } catch (Exception e) {
+        }catch (Exception e){
 
         }
         return listObj;
     }
 
 }
-
