@@ -1,5 +1,6 @@
 package com.example.jsp_exam.model;
 
+import com.example.jsp_exam.entity.Products;
 import com.example.jsp_exam.util.ConnectionHelper;
 
 import java.sql.Connection;
@@ -9,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductModel{
-    public List<Product> findAll() {
-        List<Product> listObj = new ArrayList<>();
+    public List<Products> findAll() {
+        List<Products> listObj = new ArrayList<>();
         ConnectionHelper connectionHelper = new ConnectionHelper();
         try {
             Connection connection = connectionHelper.getConnection();
@@ -23,7 +24,7 @@ public class ProductModel{
                 double price = rs.getDouble("price");
                 int amount = rs.getInt("amount");;
                 String details = rs.getString("details");
-                Product obj = new Product(id, name, price, price, amount,details);
+                Products obj = new Products(id, name, price, price, amount,details);
                 listObj.add(obj);
             }
         } catch (Exception e) {

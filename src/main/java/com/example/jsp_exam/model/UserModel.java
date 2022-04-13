@@ -29,7 +29,7 @@ public class UserModel {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch(ClassNotFoundException e) {
             e.printStackTrace();
         }
         return null;

@@ -1,5 +1,6 @@
 package com.example.jsp_exam.controller;
 
+import com.example.jsp_exam.entity.Products;
 import com.example.jsp_exam.model.ProductModel;
 
 import javax.servlet.ServletException;
@@ -14,8 +15,8 @@ public class GetListProductServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setCharacterEncoding("UTF-8");
         ProductModel model = new ProductModel();
-        List<Product> listObj = model.findAll();
+        List<Products> listObj = model.findAll();
         req.setAttribute("listObj",listObj);
-        req.getRequestDispatcher("/products/list.jsp").forward(req,resp);
+        req.getRequestDispatcher("/product.jsp").forward(req,resp);
     }
 }

@@ -7,7 +7,7 @@ public class Products {
     public int amount;
     public String details;
 
-    public Products() {
+    public Products(int id, String name, double price, double v, int amount, String details) {
     }
 
     public Products(int id, String name, double price, int amount, String details) {
