@@ -1,6 +1,5 @@
 package com.example.jsp_exam.controller;
 
-import com.example.jsp_exam.entity.Product;
 import com.example.jsp_exam.model.ProductModel;
 
 import javax.servlet.ServletException;

@@ -1,6 +1,5 @@
 package com.example.jsp_exam.model;
 
-import com.example.jsp_exam.entity.Product;
 import com.example.jsp_exam.util.ConnectionHelper;
 
 import java.sql.Connection;
