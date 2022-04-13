@@ -1,4 +1,5 @@
 package com.example.jsp_exam.util;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -14,7 +15,7 @@ public class ConnectionHelper {
                     Config.DATABASE_PASSWORD);
             System.out.println("Connect success");
         }else{
-            System.out.println("err");
+            System.out.println("Nothing");
         }
 
         return connection;
